@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_2C057541-13A8-46E2-B030-3FFF354CF51E" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_C6E3DAB5-36CE-4BAB-93D9-22388C4C8520" name="Untitled" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_2C057541-13A8-46E2-B030-3FFF354CF51E">
+  <dmn:extensionElements/>
+  <dmn:inputData id="_7504CB76-C85B-497E-BFB5-E3FD086C2970" name="edadCliente">
+    <dmn:extensionElements/>
+    <dmn:variable id="_E9483E12-7868-4132-99E4-2D89462BBE41" name="edadCliente" typeRef="number"/>
+  </dmn:inputData>
+  <dmn:decision id="_CE170DF4-DC89-461F-AE12-25B1447F5746" name="precioBase seguro">
+    <dmn:extensionElements/>
+    <dmn:variable id="_7B7DF19C-63AD-4187-8D97-AAEAF7280F9E" name="precioBase seguro" typeRef="number"/>
+    <dmn:informationRequirement id="_53CC21C6-41FD-4FCA-A65D-47DF8A78B773">
+      <dmn:requiredInput href="#_7504CB76-C85B-497E-BFB5-E3FD086C2970"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_FFC1BC3B-9825-4B29-ADF2-99618344ABA7">
+      <dmn:requiredInput href="#_A7993F44-5071-41B0-A643-2F0E7B868878"/>
+    </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_906D0C92-E554-4576-9CD7-F53119BC6506">
+      <dmn:requiredKnowledge href="#_8D91B09E-78CF-4AD4-A060-4F40A536CA2A"/>
+    </dmn:knowledgeRequirement>
+    <dmn:literalExpression id="_925197B7-0C69-4750-A1E5-99759F3A1BA3">
+      <dmn:text/>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:inputData id="_A7993F44-5071-41B0-A643-2F0E7B868878" name="accidentesPrevios">
+    <dmn:extensionElements/>
+    <dmn:variable id="_6E1FF64E-C348-41A2-B7AF-E37C5F274976" name="accidentesPrevios" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:businessKnowledgeModel id="_8D91B09E-78CF-4AD4-A060-4F40A536CA2A" name="precioBase">
+    <dmn:extensionElements/>
+    <dmn:variable id="_665144A3-8585-4F96-9454-F5A0973C05EA" name="precioBase" typeRef="number"/>
+    <dmn:encapsulatedLogic id="_FABECF0E-0931-4E5D-B4BE-3624682C3A64" kind="FEEL">
+      <dmn:formalParameter id="_22CD229C-FD99-478B-953E-A221B9AC0BEA" name="edad" typeRef="number"/>
+      <dmn:formalParameter id="_FD936446-9DF9-464C-B0EC-7AD77BC73761" name="accidente" typeRef="boolean"/>
+      <dmn:literalExpression id="_6B5C13FC-6B91-4769-A464-26A3B2417360">
+        <dmn:text>if edad &gt;25 then (if accidente = false then precioBase = 1000 else precioBase = 1250) else (if edad [18..25] then if accidente = false then precioBase = 1500 else precioBase = 2000)</dmn:text>
+      </dmn:literalExpression>
+    </dmn:encapsulatedLogic>
+  </dmn:businessKnowledgeModel>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="_42EB5929-A7E3-40D7-9199-B2863942E402" name="DRG">
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_925197B7-0C69-4750-A1E5-99759F3A1BA3">
+            <kie:width>190</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_6B5C13FC-6B91-4769-A464-26A3B2417360">
+            <kie:width>1436</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_FABECF0E-0931-4E5D-B4BE-3624682C3A64">
+            <kie:width>50</kie:width>
+            <kie:width>1436</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-drg-_7504CB76-C85B-497E-BFB5-E3FD086C2970" dmnElementRef="_7504CB76-C85B-497E-BFB5-E3FD086C2970" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="305.5981308411215" y="423" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_CE170DF4-DC89-461F-AE12-25B1447F5746" dmnElementRef="_CE170DF4-DC89-461F-AE12-25B1447F5746" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="431" y="265" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_A7993F44-5071-41B0-A643-2F0E7B868878" dmnElementRef="_A7993F44-5071-41B0-A643-2F0E7B868878" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="555" y="423" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_8D91B09E-78CF-4AD4-A060-4F40A536CA2A" dmnElementRef="_8D91B09E-78CF-4AD4-A060-4F40A536CA2A" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="585" y="264.3421052631579" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-drg-_53CC21C6-41FD-4FCA-A65D-47DF8A78B773-AUTO-TARGET" dmnElementRef="_53CC21C6-41FD-4FCA-A65D-47DF8A78B773">
+        <di:waypoint x="355.5981308411215" y="448"/>
+        <di:waypoint x="481" y="265"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_FFC1BC3B-9825-4B29-ADF2-99618344ABA7" dmnElementRef="_FFC1BC3B-9825-4B29-ADF2-99618344ABA7">
+        <di:waypoint x="605" y="448"/>
+        <di:waypoint x="481" y="315"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_906D0C92-E554-4576-9CD7-F53119BC6506-AUTO-TARGET" dmnElementRef="_906D0C92-E554-4576-9CD7-F53119BC6506">
+        <di:waypoint x="635" y="289.3421052631579"/>
+        <di:waypoint x="531" y="290"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
